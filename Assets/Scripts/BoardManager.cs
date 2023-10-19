@@ -8,7 +8,10 @@ public class BoardManager : MonoBehaviour
     public int columns = 2;
     public GameObject whiteTilePrefab;
     public GameObject blackTilePrefab;
+    public GameObject ballPrefab;
     public float spacing = 5.0f;
+
+    private GameObject selectedTile; 
 
     void Start()
     {
@@ -39,6 +42,11 @@ public class BoardManager : MonoBehaviour
                 // Ustaw rodzica pola planszy na obiekt planszy
                 tile.transform.SetParent(transform);
 
+                // Dodaj komponent odpowiedzialny za interakcje z polem planszy
+                tile.AddComponent<TileInteraction>();
+
+                // Ustaw rodzica pola planszy na obiekt planszy
+                tile.transform.SetParent(transform);
             }
         }
     }
@@ -54,6 +62,37 @@ public class BoardManager : MonoBehaviour
             Vector3 position = tile.transform.position;
             position.y = 0;
             tile.transform.position = position;
+        }
+    }
+
+    // Metoda do postawienia kuli na wybranym polu
+    public void PlaceBallOnTile(GameObject tile)
+    {
+        Vector3 position = tile.transform.position;
+        position.y = 1.0f; // Ustaw wysokoœæ kuli
+        Instantiate(ballPrefab, position, Quaternion.identity);
+    }
+
+    // Metoda do zaznaczenia pola po najechaniu myszk¹
+    public void HighlightTile(GameObject tile, Color originalColor)
+    {
+        // Odznacz poprzednio zaznaczone pole
+        if (selectedTile != null)
+        {
+            TileInteraction tileInteraction = selectedTile.GetComponent<TileInteraction>();
+            if (tileInteraction != null)
+            {
+                tileInteraction.ResetTileColor();
+            }
+        }
+
+        // Zaznacz nowe pole
+        selectedTile = tile;
+        TileInteraction selectedTileInteraction = selectedTile.GetComponent<TileInteraction>();
+        if (selectedTileInteraction != null)
+        {
+            selectedTileInteraction.ResetTileColor();
+            selectedTile.GetComponent<Renderer>().material.color = Color.yellow;
         }
     }
 
