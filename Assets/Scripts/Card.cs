@@ -6,16 +6,12 @@ using UnityEngine.UI;
 
 public class Card : MonoBehaviour
 {
-    [SerializeField] int cardsCounter = 0;
+    public int cardsCounter = 0;
     public Button card1;
-    public Button card2;
-    public Button card3;
-    public Button card4;
     public Button shuffleButton;
     string card1Chosen;
-    string card2Chosen;
-    string card3Chosen;
-    string card4Chosen;
+
+    public BoardManager boardManager;
 
 
     string[] cardsList = { "Club01", "Club02", "Club03", "Club04", "Club05", "Club06", "Club07", "Club08", "Club09", "Club10", "Club11", "Club12", "Club13",
@@ -25,40 +21,22 @@ public class Card : MonoBehaviour
 
     private void Start()
     {
+        boardManager.wasPlacedOnce = true;
         shuffleButton.gameObject.SetActive(false);
-        cardsCounter = 4;
+        cardsCounter = boardManager.rows * boardManager.columns;
         ChooseCardsRandomAndSetSprite();
 
+
+
     }
-    private void Update()
-    {
-        if(cardsCounter == 0)
-        {
-            shuffleButton.gameObject.SetActive(true);
-        }
-    }
+
     public void Card1Clicked()
     {
         card1.gameObject.SetActive(false);
-        cardsCounter--;
-    }
 
-    public void Card2Clicked()
-    {
-        card2.gameObject.SetActive(false);
         cardsCounter--;
-    }
-
-    public void Card3Clicked()
-    {
-        card3.gameObject.SetActive(false);
-        cardsCounter--;
-    }
-
-    public void Card4Clicked()
-    {
-        card4.gameObject.SetActive(false);
-        cardsCounter--;
+        
+        boardManager.wasPlacedOnce = false;
     }
 
 
@@ -66,25 +44,13 @@ public class Card : MonoBehaviour
     {
         System.Random rnd = new System.Random();
         int index1 = rnd.Next(cardsList.Length);
-        int index2 = rnd.Next(cardsList.Length);
-        int index3 = rnd.Next(cardsList.Length);
-        int index4 = rnd.Next(cardsList.Length);
 
         card1Chosen = cardsList[index1];
-        card2Chosen = cardsList[index2];
-        card3Chosen = cardsList[index3];
-        card4Chosen = cardsList[index4];
 
 
         card1.GetComponent<Image>().sprite = Resources.Load<Sprite>(card1Chosen);
-        card2.GetComponent<Image>().sprite = Resources.Load<Sprite>(card2Chosen);
-        card3.GetComponent<Image>().sprite = Resources.Load<Sprite>(card3Chosen);
-        card4.GetComponent<Image>().sprite = Resources.Load<Sprite>(card4Chosen);
 
         card1.gameObject.SetActive(true);
-        card2.gameObject.SetActive(true);
-        card3.gameObject.SetActive(true);
-        card4.gameObject.SetActive(true);
 
         shuffleButton.gameObject.SetActive(false);
     }
@@ -92,6 +58,6 @@ public class Card : MonoBehaviour
     public void ShuffleButtonClicked()
     {
         ChooseCardsRandomAndSetSprite();
-        cardsCounter = 4;
+
     }
 }

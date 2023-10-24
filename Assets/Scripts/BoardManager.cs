@@ -10,8 +10,11 @@ public class BoardManager : MonoBehaviour
     public GameObject blackTilePrefab;
     public GameObject ballPrefab;
     public float spacing = 5.0f;
+    public Card card;
 
-    private GameObject selectedTile; 
+    public bool wasPlacedOnce = false;
+
+    private GameObject selectedTile;
 
     void Start()
     {
@@ -21,7 +24,7 @@ public class BoardManager : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     void CreateBoard()
@@ -68,9 +71,15 @@ public class BoardManager : MonoBehaviour
     // Metoda do postawienia kuli na wybranym polu
     public void PlaceBallOnTile(GameObject tile)
     {
+
         Vector3 position = tile.transform.position;
         position.y = 1.0f; // Ustaw wysokoœæ kuli
         Instantiate(ballPrefab, position, Quaternion.identity);
+
+        if (card.cardsCounter > 0)
+        {
+            card.shuffleButton.gameObject.SetActive(true);
+        }
     }
 
     // Metoda do zaznaczenia pola po najechaniu myszk¹
@@ -95,5 +104,7 @@ public class BoardManager : MonoBehaviour
             selectedTile.GetComponent<Renderer>().material.color = Color.yellow;
         }
     }
+
+
 
 }

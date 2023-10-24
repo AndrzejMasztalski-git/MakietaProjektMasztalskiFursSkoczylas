@@ -7,7 +7,7 @@ public class TileInteraction : MonoBehaviour
     private BoardManager boardManager;
     private Renderer renderer;
     private Color originalColor;
-    
+
     void Start()
     {
         boardManager = FindObjectOfType<BoardManager>();
@@ -22,8 +22,21 @@ public class TileInteraction : MonoBehaviour
 
     void OnMouseDown()
     {
-        boardManager.PlaceBallOnTile(gameObject);
+        if (!boardManager.wasPlacedOnce)
+        {
+            boardManager.PlaceBallOnTile(gameObject);
+            boardManager.wasPlacedOnce = true;
+
+            
+        }
+        else
+        {
+            Debug.Log("Karte zosta³a ju¿ po³o¿ona!");
+        }
+
     }
+
+
 
     public void ResetTileColor()
     {
