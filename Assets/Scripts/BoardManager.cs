@@ -8,7 +8,10 @@ public class BoardManager : MonoBehaviour
     public int columns = 2;
     public GameObject whiteTilePrefab;
     public GameObject blackTilePrefab;
-    public GameObject ballPrefab;
+    public GameObject hospitalPrefab;
+    public GameObject schoolPrefab;
+    public GameObject marketPrefab;
+    public GameObject fire_stationPrefab;
     public float spacing = 5.0f;
     public Card card;
 
@@ -68,13 +71,32 @@ public class BoardManager : MonoBehaviour
         }
     }
 
-    // Metoda do postawienia kuli na wybranym polu
-    public void PlaceBallOnTile(GameObject tile)
+    public void PlaceBuildingOnTile(GameObject tile)
     {
-
         Vector3 position = tile.transform.position;
-        position.y = 1.0f; // Ustaw wysokoœæ kuli
-        Instantiate(ballPrefab, position, Quaternion.identity);
+        position.y = 1.0f; // Ustaw wysokoœæ budynku
+
+        string chosenCard = card.card1Chosen;
+
+        switch(chosenCard)
+        {
+            case "K_TREFL_RZUT_P":
+                Instantiate(hospitalPrefab, position, Quaternion.identity);
+                break;
+            case "K_KARO_RZUT_P":
+                Instantiate(schoolPrefab, position, Quaternion.identity);
+                break;
+            case "8_PIK_RZUT_P":
+                Instantiate(marketPrefab, position, Quaternion.identity);
+                break;
+            case "D_KIER_RZUT_P":
+                Instantiate(fire_stationPrefab, position, Quaternion.identity);
+                break;
+            default:
+                Debug.LogWarning("Nieobs³ugiwana karta: " + chosenCard);
+                break;
+
+        }
 
         if (card.cardsCounter > 0)
         {
@@ -104,7 +126,5 @@ public class BoardManager : MonoBehaviour
             selectedTile.GetComponent<Renderer>().material.color = Color.yellow;
         }
     }
-
-
 
 }

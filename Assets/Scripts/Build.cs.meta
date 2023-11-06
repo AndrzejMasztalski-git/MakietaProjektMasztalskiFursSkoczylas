@@ -3,7 +3,9 @@ guid: c21d66b5b1b62b3408d5bdfbb9399bf2
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - hospitalPrefab: {fileID: 363025940278517486, guid: eb1a3f979ef5c8743a26ef5a30ec6511, type: 3}
+  - schoolPrefab: {fileID: 1295220564887911823, guid: 8bf27f8a5975e1f4e9160e979cfcb02b, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

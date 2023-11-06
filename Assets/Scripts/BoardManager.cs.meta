@@ -3,7 +3,12 @@ guid: d5b613ea6d95c7d4ea7b3264253612e6
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - whiteTilePrefab: {instanceID: 0}
+  - blackTilePrefab: {instanceID: 0}
+  - hospitalPrefab: {fileID: 363025940278517486, guid: eb1a3f979ef5c8743a26ef5a30ec6511, type: 3}
+  - schoolPrefab: {instanceID: 0}
+  - card: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

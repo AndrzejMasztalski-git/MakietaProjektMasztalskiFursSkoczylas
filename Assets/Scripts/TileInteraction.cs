@@ -24,7 +24,7 @@ public class TileInteraction : MonoBehaviour
     {
         if (!boardManager.wasPlacedOnce)
         {
-            boardManager.PlaceBallOnTile(gameObject);
+            boardManager.PlaceBuildingOnTile(gameObject);
             boardManager.wasPlacedOnce = true;
 
             

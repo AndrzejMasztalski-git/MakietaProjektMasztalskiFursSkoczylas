@@ -3,7 +3,12 @@ guid: 63994652b880fa74c92bdb0368807a8e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - card1: {instanceID: 0}
+  - shuffleButton: {instanceID: 0}
+  - hospitalPrefab: {fileID: 363025940278517486, guid: eb1a3f979ef5c8743a26ef5a30ec6511, type: 3}
+  - schoolPrefab: {fileID: 1295220564887911823, guid: 8bf27f8a5975e1f4e9160e979cfcb02b, type: 3}
+  - boardManager: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
