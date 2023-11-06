@@ -11,9 +11,24 @@ public class Card : MonoBehaviour
     public Button shuffleButton;
     public string card1Chosen;
 
+    public string Symbol { get; set; }
+    public string Piktogram { get; set; }
+    public GameObject Model3D { get; set; }
+
     public BoardManager boardManager;
 
-    string[] cardsList = { "K_TREFL_RZUT_P", "K_KARO_RZUT_P", "8_PIK_RZUT_P", "D_KIER_RZUT_P" };
+    public GameObject hospitalPrefab;
+    public GameObject schoolPrefab;
+    public GameObject marketPrefab;
+    public GameObject fire_StationPrefab;
+
+    private List<string> cardsList = new List<string>
+    {
+        "J_TREFL_RZUT_P",
+        "K_KARO_RZUT_P",
+        "8_PIK_RZUT_P",
+        "D_KIER_RZUT_P"
+    };
 
     private void Start()
     {
@@ -36,14 +51,25 @@ public class Card : MonoBehaviour
     public void ChooseCardsRandomAndSetSprite()
     {
         System.Random rnd = new System.Random();
-        int index1 = rnd.Next(cardsList.Length);
+        int index = rnd.Next(cardsList.Count);
 
-        card1Chosen = cardsList[index1];
-
-
-        card1.GetComponent<Image>().sprite = Resources.Load<Sprite>(card1Chosen);
+        card1Chosen = cardsList[index];
+        Symbol = card1Chosen.Split('_')[0];
 
         card1.gameObject.SetActive(true);
+
+        // £adowanie sprite'a o nazwie card1Chosen z Resources
+        Sprite cardSprite = Resources.Load<Sprite>(card1Chosen);
+
+        if (cardSprite != null)
+        {
+            // Jeœli sprite zosta³ za³adowany poprawnie, ustaw go w komponencie Image na card1
+            card1.GetComponent<Image>().sprite = cardSprite;
+        }
+        else
+        {
+            Debug.LogWarning("Nie znaleziono sprite'a: " + card1Chosen);
+        }
 
         shuffleButton.gameObject.SetActive(false);
     }
@@ -51,6 +77,5 @@ public class Card : MonoBehaviour
     public void ShuffleButtonClicked()
     {
         ChooseCardsRandomAndSetSprite();
-
     }
 }

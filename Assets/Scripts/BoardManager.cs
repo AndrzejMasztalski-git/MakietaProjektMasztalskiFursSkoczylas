@@ -27,7 +27,19 @@ public class BoardManager : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
 
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.transform.CompareTag("Tile"))
+                {
+                    PlaceBuildingOnTile(hit.transform.gameObject);
+                }
+            }
+        }
     }
 
     void CreateBoard()
@@ -74,33 +86,42 @@ public class BoardManager : MonoBehaviour
     public void PlaceBuildingOnTile(GameObject tile)
     {
         Vector3 position = tile.transform.position;
-        position.y = 1.0f; // Ustaw wysokoœæ budynku
+        position.y = 1.0f;
 
         string chosenCard = card.card1Chosen;
+        string symbol = chosenCard.Split('_')[0];
 
-        switch(chosenCard)
+        GameObject buildingPrefab = GetBuildingPrefabForSymbol(symbol);
+
+        if (buildingPrefab != null)
         {
-            case "K_TREFL_RZUT_P":
-                Instantiate(hospitalPrefab, position, Quaternion.identity);
-                break;
-            case "K_KARO_RZUT_P":
-                Instantiate(schoolPrefab, position, Quaternion.identity);
-                break;
-            case "8_PIK_RZUT_P":
-                Instantiate(marketPrefab, position, Quaternion.identity);
-                break;
-            case "D_KIER_RZUT_P":
-                Instantiate(fire_stationPrefab, position, Quaternion.identity);
-                break;
-            default:
-                Debug.LogWarning("Nieobs³ugiwana karta: " + chosenCard);
-                break;
-
+            Instantiate(buildingPrefab, position, Quaternion.identity);
+        }
+        else
+        {
+            Debug.LogWarning("Nieobs³ugiwana karta: " + chosenCard);
         }
 
         if (card.cardsCounter > 0)
         {
             card.shuffleButton.gameObject.SetActive(true);
+        }
+    }
+
+    private GameObject GetBuildingPrefabForSymbol(string symbol)
+    {
+        switch (symbol)
+        {
+            case "K":
+                return hospitalPrefab;
+            case "D":
+                return schoolPrefab;
+            case "8":
+                return marketPrefab;
+            case "J":
+                return fire_stationPrefab;
+            default:
+                return null;
         }
     }
 
