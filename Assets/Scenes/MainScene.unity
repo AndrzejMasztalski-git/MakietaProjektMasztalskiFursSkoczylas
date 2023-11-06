@@ -571,8 +571,8 @@ MonoBehaviour:
   columns: 2
   whiteTilePrefab: {fileID: 4033227924104185295}
   blackTilePrefab: {fileID: 5205202193006373057}
-  hospitalPrefab: {fileID: 363025940454465083}
-  schoolPrefab: {fileID: 0}
+  hospitalPrefab: {fileID: 363025940278517486, guid: eb1a3f979ef5c8743a26ef5a30ec6511, type: 3}
+  schoolPrefab: {fileID: 1295220564887911823, guid: 8bf27f8a5975e1f4e9160e979cfcb02b, type: 3}
   marketPrefab: {fileID: 4722627683411591535, guid: 580e175accc4f644e8c5daa4090d0293, type: 3}
   fire_stationPrefab: {fileID: 3520681445263854137, guid: e478292f536a7134e8e48cb62cf2be07, type: 3}
   spacing: 5
