@@ -14,6 +14,7 @@ public class SpacerPoOsiedluButton : MonoBehaviour
 
     private GameObject capsule;
 
+
     private void Start()
     {
         Camera.main.transform.position = new Vector3(2.28f, 10.09f, -16.17f);

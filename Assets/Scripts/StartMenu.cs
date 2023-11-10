@@ -18,6 +18,7 @@ public class StartMenu : MonoBehaviour
     public GameObject buttonPrefab;
     public GameObject buttonParent;
     string[] listOfDifficultyLevels = { "LOW", "MEDIUM", "HARD" };
+    public GameObject menu;
 
     private void Start()
     {
@@ -27,6 +28,7 @@ public class StartMenu : MonoBehaviour
 
     public void StartButtonClicked()
     {
+        menu.SetActive(false);
         gameManager.menu.GetComponent<Canvas>().enabled = false;
         gameManager.hud.GetComponent<Canvas>().enabled = true;
         bombButton.GetComponent<Button>().enabled = true;
