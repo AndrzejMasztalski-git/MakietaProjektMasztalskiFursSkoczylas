@@ -32,7 +32,6 @@ public class Card : MonoBehaviour
 
     private void Start()
     {
-        //boardManager.wasPlacedOnce = true;
         shuffleButton.gameObject.SetActive(false);
         cardsCounter = boardManager.rows * boardManager.columns;
         ChooseCardsRandomAndSetSprite();

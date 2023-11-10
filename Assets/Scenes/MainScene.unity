@@ -349,7 +349,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &191045351
@@ -515,6 +515,7 @@ MonoBehaviour:
   card1: {fileID: 393907831}
   shuffleButton: {fileID: 1615580124}
   card1Chosen: 
+  bombButton: {fileID: 0}
   boardManager: {fileID: 894708059}
   hospitalPrefab: {fileID: 0}
   schoolPrefab: {fileID: 0}
@@ -982,8 +983,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 175}
-  m_SizeDelta: {x: 175.9625, y: 57.5715}
+  m_AnchoredPosition: {x: 0, y: -138}
+  m_SizeDelta: {x: 175.9625, y: 57.572}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &727761918
 MonoBehaviour:

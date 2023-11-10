@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class BoardManager : MonoBehaviour
 {
@@ -26,7 +28,6 @@ public class BoardManager : MonoBehaviour
         CreateBoard();
         AlignTiles();
     }
-
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
