@@ -15,6 +15,8 @@ public class BoardManager : MonoBehaviour
     public float spacing = 5.0f;
     public Card card;
 
+    private HashSet<int> occupiedTileIds = new HashSet<int>();
+
     public bool wasPlacedOnce = false;
 
     private GameObject selectedTile;
@@ -85,26 +87,44 @@ public class BoardManager : MonoBehaviour
 
     public void PlaceBuildingOnTile(GameObject tile)
     {
-        Vector3 position = tile.transform.position;
-        position.y = 1.0f;
 
-        string chosenCard = card.card1Chosen;
-        string symbol = chosenCard.Split('_')[0];
-
-        GameObject buildingPrefab = GetBuildingPrefabForSymbol(symbol);
-
-        if (buildingPrefab != null)
+        if (!wasPlacedOnce)
         {
-            Instantiate(buildingPrefab, position, Quaternion.identity);
-        }
-        else
-        {
-            Debug.LogWarning("Nieobs³ugiwana karta: " + chosenCard);
-        }
 
-        if (card.cardsCounter > 0)
-        {
-            card.shuffleButton.gameObject.SetActive(true);
+            Vector3 position = tile.transform.position;
+            position.y = 1.0f;
+
+            int tileId = GenerateTileId(position); //unikalny identyfiaktor dla danej p³ytki
+
+            if (!occupiedTileIds.Contains(tileId))
+            {
+                string chosenCard = card.card1Chosen;
+                string symbol = chosenCard.Split('_')[0];
+
+                GameObject buildingPrefab = GetBuildingPrefabForSymbol(symbol);
+
+                if (buildingPrefab != null)
+                {
+                    Instantiate(buildingPrefab, position, Quaternion.identity);
+                    occupiedTileIds.Add(tileId);
+                    wasPlacedOnce = true;
+                }
+                else
+                {
+                    Debug.LogWarning("Nieobs³ugiwana karta: " + chosenCard);
+                }
+
+                if (card.cardsCounter > 0)
+                {
+                    card.shuffleButton.gameObject.SetActive(true);
+                }
+            }
+            else
+            {
+                Debug.Log("Ta p³ytka jest ju¿ zajêta!");
+                card.ChooseCardsRandomAndSetSprite();
+                card.cardsCounter++;
+            }
         }
     }
 
@@ -147,5 +167,9 @@ public class BoardManager : MonoBehaviour
             selectedTile.GetComponent<Renderer>().material.color = Color.yellow;
         }
     }
-
+    private int GenerateTileId(Vector3 position)
+    {
+        // Prosta funkcja generuj¹ca unikalny identyfikator dla p³ytki na podstawie jej pozycji
+        return Mathf.FloorToInt(position.x * 1000) + Mathf.FloorToInt(position.z);
+    }
 }

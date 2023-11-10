@@ -32,7 +32,7 @@ public class Card : MonoBehaviour
 
     private void Start()
     {
-        boardManager.wasPlacedOnce = true;
+        //boardManager.wasPlacedOnce = true;
         shuffleButton.gameObject.SetActive(false);
         cardsCounter = boardManager.rows * boardManager.columns;
         ChooseCardsRandomAndSetSprite();
@@ -72,6 +72,8 @@ public class Card : MonoBehaviour
         }
 
         shuffleButton.gameObject.SetActive(false);
+
+        boardManager.wasPlacedOnce = true;
     }
 
     public void ShuffleButtonClicked()

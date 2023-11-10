@@ -29,7 +29,7 @@ public class TileInteraction : MonoBehaviour
         }
         else
         {
-            Debug.Log("Karte zosta³a ju¿ po³o¿ona!");
+            Debug.Log("Musisz wybraæ karte!");
         }
 
     }
