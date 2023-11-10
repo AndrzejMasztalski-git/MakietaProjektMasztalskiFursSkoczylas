@@ -14,7 +14,7 @@ public class StartMenu : MonoBehaviour
     public string nickname;
     public GameManager gameManager;
     public GameObject gameBoard;
-
+    public Button bombButton;
     public GameObject buttonPrefab;
     public GameObject buttonParent;
     string[] listOfDifficultyLevels = { "LOW", "MEDIUM", "HARD" };
@@ -33,7 +33,9 @@ public class StartMenu : MonoBehaviour
     {
         gameManager.menu.GetComponent<Canvas>().enabled = false;
         gameManager.hud.GetComponent<Canvas>().enabled = true;
+        bombButton.GetComponent<Button>().enabled = true;
         gameBoard.SetActive(true);
+        gameManager.difficultySet = true;
         nickname = nicknameField.text;
     }
 

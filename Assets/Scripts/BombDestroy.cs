@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class BombDestroy : MonoBehaviour
 {
-    private bool shouldDestroy = false;
-
+    public GameManager gameManager;
+    public bool shouldDestroy = false;
+    public bool wasDestroyed = false;
     public void DestroyObject()
     {
         shouldDestroy = true;
@@ -13,17 +14,31 @@ public class BombDestroy : MonoBehaviour
 
     void Update()
     {
-        if (shouldDestroy)
+        if(Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
+            if (shouldDestroy)
             {
-                    Destroy(hit.transform.gameObject);
-            }
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                
+                if (Physics.Raycast(ray, out hit))
+                {
+                    if (hit.transform.gameObject.CompareTag("Building") && gameManager.bombCounter>0)
+                    {
+                        Destroy(hit.transform.gameObject);
+                        gameManager.bombCounter--;
+                        gameManager.bombsLeft.text = $"{gameManager.bombCounter}";
+                    }
+                    else if(gameManager.bombCounter<=0)
+                    {
+                        gameManager.bombsLeft.text = "No bombs left!";
+                    }
+                   
+                }
 
-            shouldDestroy = false;
+                shouldDestroy = false;
+            }
         }
+        
     }
 }
