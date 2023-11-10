@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEditor;
-
+using JetBrains.Annotations;
 
 public class StartMenu : MonoBehaviour
 {
@@ -23,10 +23,6 @@ public class StartMenu : MonoBehaviour
     {
         ButtonCreation();
         
-    }
-    void Update()
-    {
-        nickname = nicknameField.text;
     }
 
     public void StartButtonClicked()
@@ -58,5 +54,10 @@ public class StartMenu : MonoBehaviour
     void ButtonClicked(string diff)
     {
         difficulty = diff;
+    }
+
+    public void SetNicknamClick()
+    {
+        nickname = nicknameField.text;
     }
 }

@@ -93,7 +93,7 @@ public class BoardManager : MonoBehaviour
         {
 
             Vector3 position = tile.transform.position;
-            position.y = 1.0f;
+            position.y = 0;
 
             int tileId = GenerateTileId(position); //unikalny identyfiaktor dla danej p³ytki
 
