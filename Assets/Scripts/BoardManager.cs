@@ -16,7 +16,7 @@ public class BoardManager : MonoBehaviour
     public GameObject fire_stationPrefab;
     public float spacing = 5.0f;
     public Card card;
-
+    public SpawnTreesFountains spawnTreesFountains;
     private HashSet<int> occupiedTileIds = new HashSet<int>();
 
     public bool wasPlacedOnce = false;
@@ -101,13 +101,15 @@ public class BoardManager : MonoBehaviour
             {
                 string chosenCard = card.card1Chosen;
                 string symbol = chosenCard.Split('_')[0];
-
+                spawnTreesFountains.SpawnTrees(tile.transform);
+                spawnTreesFountains.SpawnFountains(tile.transform);
                 GameObject buildingPrefab = GetBuildingPrefabForSymbol(symbol);
 
                 if (buildingPrefab != null)
                 {
                     Instantiate(buildingPrefab, position, Quaternion.identity);
                     occupiedTileIds.Add(tileId);
+
                     wasPlacedOnce = true;
                 }
                 else

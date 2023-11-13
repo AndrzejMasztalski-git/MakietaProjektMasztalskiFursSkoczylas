@@ -1140,6 +1140,7 @@ GameObject:
   m_Component:
   - component: {fileID: 709874827}
   - component: {fileID: 709874826}
+  - component: {fileID: 709874828}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1184,6 +1185,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &709874828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709874825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5537aa5976d54149907b262330e4d5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  treePrefab: {fileID: 5968808555647569069, guid: 2509a83c7793acb478968b001318c997, type: 3}
+  fountainPrefab: {fileID: 7482524759406551298, guid: c373584ca33da4449b7ac384926dec5c, type: 3}
 --- !u!1 &727761916
 GameObject:
   m_ObjectHideFlags: 0
@@ -1357,6 +1372,7 @@ MonoBehaviour:
   fire_stationPrefab: {fileID: 3520681445263854137, guid: e478292f536a7134e8e48cb62cf2be07, type: 3}
   spacing: 5
   card: {fileID: 256853842}
+  spawnTreesFountains: {fileID: 709874828}
   wasPlacedOnce: 0
 --- !u!4 &894708060
 Transform:
@@ -2469,7 +2485,6 @@ MonoBehaviour:
   destinationZ: 1
   speed: 5
   capsulePrefab: {fileID: 5087557614298068137, guid: 451a986333b47254dbcfecc7337b7ba5, type: 3}
-  sterowanieGraczem: {fileID: 5087557614298068131, guid: 451a986333b47254dbcfecc7337b7ba5, type: 3}
 --- !u!1001 &393414593793006970
 PrefabInstance:
   m_ObjectHideFlags: 0
