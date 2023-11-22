@@ -1198,7 +1198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   treePrefab: {fileID: 5968808555647569069, guid: 2509a83c7793acb478968b001318c997, type: 3}
-  fountainPrefab: {fileID: 7482524759406551298, guid: c373584ca33da4449b7ac384926dec5c, type: 3}
+  fountainPrefab: {fileID: 861625042098059076, guid: c373584ca33da4449b7ac384926dec5c, type: 3}
 --- !u!1 &727761916
 GameObject:
   m_ObjectHideFlags: 0
