@@ -17,6 +17,7 @@ public class BoardManager : MonoBehaviour
     public float spacing = 5.0f;
     public Card card;
     public SpawnTreesFountains spawnTreesFountains;
+    public CustomNavmeshAgent customNavmeshAgent;
     private HashSet<int> occupiedTileIds = new HashSet<int>();
 
     public bool wasPlacedOnce = false;
@@ -103,6 +104,7 @@ public class BoardManager : MonoBehaviour
                 string symbol = chosenCard.Split('_')[0];
                 spawnTreesFountains.SpawnTrees(tile.transform);
                 spawnTreesFountains.SpawnFountains(tile.transform);
+                //customNavmeshAgent.SpawnMia(tile.transform);
                 GameObject buildingPrefab = GetBuildingPrefabForSymbol(symbol);
 
                 if (buildingPrefab != null)
