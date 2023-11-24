@@ -4,37 +4,34 @@ using UnityEngine;
 
 public class SterowanieGraczem : MonoBehaviour
 {
-    public float predkoscPoruszania = 1f;
+    public float sensX;
+    public float sensY;
 
-    private bool kontrolaAktywowana = false;
+    public Transform orientation;
 
-    void Update()
+    float xRotation;
+    float yRotation;
+
+    private void Start()
     {
-        if (kontrolaAktywowana)
-        {
-            float ruchPrzodTyl = Input.GetAxis("Vertical");
-            float ruchLewoPrawo = Input.GetAxis("Horizontal");
-
-            Vector3 ruch = new Vector3(ruchLewoPrawo, 0f, ruchPrzodTyl);
-
-            ruch = Camera.main.transform.TransformDirection(ruch);
-
-            ruch.y = 0f;
-
-            ruch.Normalize();
-
-            transform.Translate(ruch * predkoscPoruszania * Time.deltaTime);
-
-            Camera.main.transform.position = transform.position;
-            Camera.main.transform.rotation = transform.rotation;
-        }
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
-    public void AktywujKontrole()
+    private void Update()
     {
-        kontrolaAktywowana = true;
-        transform.rotation = Quaternion.identity;
-        Camera.main.transform.rotation = Quaternion.Euler(0f,0f,0f);
+        // get mouse input
+        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
+
+        yRotation += mouseX;
+        xRotation -= mouseY;
+
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+
+        // rotate cam and orientation
+        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
     }
 }
 
