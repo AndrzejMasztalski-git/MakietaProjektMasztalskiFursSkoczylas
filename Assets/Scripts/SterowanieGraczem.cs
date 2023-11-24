@@ -12,14 +12,11 @@ public class SterowanieGraczem : MonoBehaviour
     float xRotation;
     float yRotation;
 
-    private void Start()
+    private void Update()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-    }
 
-    private void Update()
-    {
         // get mouse input
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
         float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;

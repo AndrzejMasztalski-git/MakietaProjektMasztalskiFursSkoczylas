@@ -19,6 +19,7 @@ public class BoardManager : MonoBehaviour
     public SpawnTreesFountains spawnTreesFountains;
     public CustomNavmeshAgent customNavmeshAgent;
     private HashSet<int> occupiedTileIds = new HashSet<int>();
+    public GameObject tile;
 
     public bool wasPlacedOnce = false;
 
@@ -59,7 +60,7 @@ public class BoardManager : MonoBehaviour
                 Vector3 position = new Vector3(j * spacing, 0, i * spacing);
 
                 // Stwórz nowe pole planszy
-                GameObject tile = Instantiate(tilePrefab, position, Quaternion.identity);
+                tile = Instantiate(tilePrefab, position, Quaternion.identity);
 
                 // Ustaw rodzica pola planszy na obiekt planszy
                 tile.transform.SetParent(transform);

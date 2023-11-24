@@ -5324,6 +5324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 1463573446002807250}
+  miaBikiniPrefab: {fileID: 0}
 --- !u!1 &7472940558957595731
 GameObject:
   m_ObjectHideFlags: 0
