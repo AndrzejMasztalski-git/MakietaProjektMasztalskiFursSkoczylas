@@ -5,7 +5,7 @@ using UnityEngine.AI;
 public class CustomNavmeshAgent : MonoBehaviour
 {
     public NavMeshAgent agent;
-    public GameObject miaBikiniPrefab;
+    public GameObject capsulePrefab;
 
     void Start()
     {
@@ -38,7 +38,7 @@ public class CustomNavmeshAgent : MonoBehaviour
             yield return new WaitForSeconds(delay);
 
             // Dodaj to wywo³anie, aby postaæ by³a generowana w trakcie ruchu
-            SpawnMia(transform);
+            SpawnCapsule(transform);
         }
     }
 
@@ -55,12 +55,16 @@ public class CustomNavmeshAgent : MonoBehaviour
         return transform.position;
     }
 
-    public void SpawnMia(Transform transform)
+    public void SpawnCapsule(Transform tileTransform)
     {
-        var bounds = transform.position;
-        var px = bounds.x;
-        var py = bounds.y;
-        Vector2 pos = new Vector3(px, py);
-        Instantiate(miaBikiniPrefab, pos, transform.rotation);
+        float capsuleHeight = 2.0f; // Wysokoœæ kapsu³y, dostosuj do swoich potrzeb
+        float offset = 0.5f; // Offset od krawêdzi, dostosuj do swoich potrzeb
+
+        Vector3 spawnPosition = new Vector3(
+           tileTransform.position.x + offset,
+           tileTransform.position.y + capsuleHeight / 2,
+           tileTransform.position.z + offset
+       );
+            Instantiate(capsulePrefab, spawnPosition, Quaternion.identity);
     }
 }
