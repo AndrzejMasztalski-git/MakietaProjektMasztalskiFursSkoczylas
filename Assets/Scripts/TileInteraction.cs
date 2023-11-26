@@ -27,6 +27,7 @@ public class TileInteraction : MonoBehaviour
         if (!boardManager.wasPlacedOnce)
         {
             boardManager.PlaceBuildingOnTile(gameObject);
+            Debug.Log($"TileInteraction {gameObject.transform.position}");
             boardManager.wasPlacedOnce = true;
 
             //navMeshSurface.BuildNavMesh();

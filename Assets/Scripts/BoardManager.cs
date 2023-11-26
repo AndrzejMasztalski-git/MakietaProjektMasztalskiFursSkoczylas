@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine;
 using UnityEngine.UI;
 
 public class BoardManager : MonoBehaviour
@@ -19,7 +18,8 @@ public class BoardManager : MonoBehaviour
     public SpawnTreesFountains spawnTreesFountains;
     public CustomNavmeshAgent customNavmeshAgent;
     private HashSet<int> occupiedTileIds = new HashSet<int>();
-    public GameObject tile;
+    public GameObject tile1;
+    private GameObject building;
 
     public bool wasPlacedOnce = false;
 
@@ -60,16 +60,16 @@ public class BoardManager : MonoBehaviour
                 Vector3 position = new Vector3(j * spacing, 0, i * spacing);
 
                 // Stwórz nowe pole planszy
-                tile = Instantiate(tilePrefab, position, Quaternion.identity);
+                tile1 = Instantiate(tilePrefab, position, Quaternion.identity);
 
                 // Ustaw rodzica pola planszy na obiekt planszy
-                tile.transform.SetParent(transform);
+                tile1.transform.SetParent(transform);
 
                 // Dodaj komponent odpowiedzialny za interakcje z polem planszy
-                tile.AddComponent<TileInteraction>();
+                tile1.AddComponent<TileInteraction>();
 
                 // Ustaw rodzica pola planszy na obiekt planszy
-                tile.transform.SetParent(transform);
+                tile1.transform.SetParent(transform);
             }
         }
     }
@@ -93,7 +93,6 @@ public class BoardManager : MonoBehaviour
 
         if (!wasPlacedOnce)
         {
-
             Vector3 position = tile.transform.position;
             position.y = 0;
 
@@ -103,14 +102,16 @@ public class BoardManager : MonoBehaviour
             {
                 string chosenCard = card.card1Chosen;
                 string symbol = chosenCard.Split('_')[0];
-                spawnTreesFountains.SpawnTrees(tile.transform);
-                spawnTreesFountains.SpawnFountains(tile.transform);
+                
 
                 GameObject buildingPrefab = GetBuildingPrefabForSymbol(symbol);
 
                 if (buildingPrefab != null)
                 {
-                    Instantiate(buildingPrefab, position, Quaternion.identity);
+                    building = Instantiate(buildingPrefab, position, Quaternion.identity);
+                    spawnTreesFountains.SpawnTrees(building.transform.position);
+                    spawnTreesFountains.SpawnFountains(building.transform.position);
+                    Debug.Log($"{building.transform.position}");
                     customNavmeshAgent.SpawnResident(tile.transform);
                     occupiedTileIds.Add(tileId);
 
@@ -155,6 +156,7 @@ public class BoardManager : MonoBehaviour
     // Metoda do zaznaczenia pola po najechaniu myszk¹
     public void HighlightTile(GameObject tile, Color originalColor)
     {
+        
         // Odznacz poprzednio zaznaczone pole
         if (selectedTile != null)
         {
@@ -164,6 +166,7 @@ public class BoardManager : MonoBehaviour
                 tileInteraction.ResetTileColor();
             }
         }
+        
 
         // Zaznacz nowe pole
         selectedTile = tile;

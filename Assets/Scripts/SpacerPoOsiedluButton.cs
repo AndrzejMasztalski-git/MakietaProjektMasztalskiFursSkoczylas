@@ -24,21 +24,12 @@ public class SpacerPoOsiedluButton : MonoBehaviour
         //skryptMoveCamera.enabled = false;
     }
 
-    private void Update()
-    {
-        //if (Input.GetKeyDown(KeyCode.Escape))
-        //{
-        //    MainCamera.enabled = true;
-        //    PlayerCamera.enabled = false;
-
-        //    skryptSterowaniaGraczem.enabled = false;
-        //}
-    }
+    
 
     public void SwitchCamera()
     {
 
-        GameObject capsule = Instantiate(capsulePrefab, boardManager.tile.transform.position, Quaternion.identity);
+        GameObject capsule = Instantiate(capsulePrefab, boardManager.tile1.transform.position, Quaternion.identity);
         cameraHolder.transform.SetParent(capsule.transform);
         cameraHolder.transform.position = capsule.transform.position;
 
