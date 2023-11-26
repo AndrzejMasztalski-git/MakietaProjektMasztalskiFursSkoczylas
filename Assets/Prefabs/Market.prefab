@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6524265241071788218}
   - component: {fileID: 9172819465797574785}
   - component: {fileID: 9120981858316642036}
+  - component: {fileID: -2726324692050667029}
   m_Layer: 0
   m_Name: Market
   m_TagString: Building
@@ -112,3 +113,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2104153811603578874, guid: 426427d09eae15a489510a472a49d806, type: 3}
+--- !u!208 &-2726324692050667029
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4722627683411591535}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 18.404001, y: 5.0290003, z: 10.037001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -4.202, y: 5.0220003, z: 0.97400004}
+  m_TimeToStationary: 0.5

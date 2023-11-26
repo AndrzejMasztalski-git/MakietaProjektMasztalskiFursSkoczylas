@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class TileInteraction : MonoBehaviour
 {
     private BoardManager boardManager;
     private Renderer renderer;
     private Color originalColor;
+    public NavMeshSurface navMeshSurface;
 
     void Start()
     {
@@ -27,7 +29,7 @@ public class TileInteraction : MonoBehaviour
             boardManager.PlaceBuildingOnTile(gameObject);
             boardManager.wasPlacedOnce = true;
 
-            //boardManager.GenerateNavMeshForTile(gameObject);
+            //navMeshSurface.BuildNavMesh();
         }
         else
         {

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3250902957672360080}
   - component: {fileID: 790786689844059226}
   - component: {fileID: 3683012485118437979}
+  - component: {fileID: 6005974347298802832}
   m_Layer: 0
   m_Name: School
   m_TagString: Building
@@ -97,3 +98,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 35.442173, y: 16.20454, z: 62.83526}
   m_Center: {x: 0, y: 8.100458, z: -14.77673}
+--- !u!208 &6005974347298802832
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1295220564887911823}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 17.721, y: 8.102, z: 31.418001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 8.1, z: -14.777}
+  m_TimeToStationary: 0.5

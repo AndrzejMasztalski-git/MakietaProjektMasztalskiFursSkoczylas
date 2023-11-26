@@ -105,13 +105,13 @@ public class BoardManager : MonoBehaviour
                 string symbol = chosenCard.Split('_')[0];
                 spawnTreesFountains.SpawnTrees(tile.transform);
                 spawnTreesFountains.SpawnFountains(tile.transform);
-                //customNavmeshAgent.SpawnCapsule(tile.transform);
+
                 GameObject buildingPrefab = GetBuildingPrefabForSymbol(symbol);
 
                 if (buildingPrefab != null)
                 {
                     Instantiate(buildingPrefab, position, Quaternion.identity);
-                    customNavmeshAgent.SpawnCapsule(tile.transform);
+                    customNavmeshAgent.SpawnResident(tile.transform);
                     occupiedTileIds.Add(tileId);
 
                     wasPlacedOnce = true;

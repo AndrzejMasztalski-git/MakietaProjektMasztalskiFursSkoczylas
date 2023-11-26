@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2164338454197059387}
   - component: {fileID: 7531710438395639613}
   - component: {fileID: -6528108823385059973}
+  - component: {fileID: -4213589067288247059}
   m_Layer: 0
   m_Name: Hospital
   m_TagString: Building
@@ -112,3 +113,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 5105444607536947446, guid: bf248c063a81ab249aac3d6df14c5c33, type: 3}
+--- !u!208 &-4213589067288247059
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363025940278517486}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 18.404001, y: 9.481001, z: 9.791}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -1.8670001, y: 9.466001, z: 2.112}
+  m_TimeToStationary: 0.5
