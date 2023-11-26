@@ -10,6 +10,7 @@ public class SpacerPoOsiedluButton : MonoBehaviour
     public Camera PlayerCamera;
     public Button WalkButton;
     public SterowanieGraczem skryptSterowaniaGraczem;
+    //public PlayerMovement skryptPlayerMovement;
     //public MoveCamera skryptMoveCamera;
     public GameObject capsulePrefab;
     public BoardManager boardManager;
@@ -19,6 +20,7 @@ public class SpacerPoOsiedluButton : MonoBehaviour
     {
         PlayerCamera.enabled = false;
         skryptSterowaniaGraczem.enabled = false;
+        //skryptPlayerMovement.enabled = false;
         //skryptMoveCamera.enabled = false;
     }
 
@@ -46,6 +48,7 @@ public class SpacerPoOsiedluButton : MonoBehaviour
 
         // Aktywuj sterowanie graczem po przejsciu na planszê
         skryptSterowaniaGraczem.enabled = true;
+        //skryptPlayerMovement.enabled = true;
         //skryptMoveCamera.enabled = true;
     }
 

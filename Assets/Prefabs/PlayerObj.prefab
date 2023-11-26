@@ -129,9 +129,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e6ed0d596c60694dbcc7b0897cf1926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensX: 0
-  sensY: 0
-  orientation: {fileID: 895218536692139041}
+  sensX: 400
+  sensY: 400
+  orientation: {fileID: 3980070465526143643}
+  moveSpeed: 2
 --- !u!1 &8789597352980997158
 GameObject:
   m_ObjectHideFlags: 0

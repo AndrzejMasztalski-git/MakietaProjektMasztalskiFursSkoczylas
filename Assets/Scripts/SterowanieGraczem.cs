@@ -12,8 +12,26 @@ public class SterowanieGraczem : MonoBehaviour
     float xRotation;
     float yRotation;
 
+    [Header("Movement")]
+    public float moveSpeed;
+
+    float horizontalInput;
+    float verticalInput;
+
+    Vector3 moveDirection;
+
+    Rigidbody rb;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
+    }
+
+
     private void Update()
     {
+        MyInput();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
@@ -29,6 +47,25 @@ public class SterowanieGraczem : MonoBehaviour
         // rotate cam and orientation
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+    }
+
+    private void FixedUpdate()
+    {
+        MovePlayer();
+    }
+
+    private void MyInput()
+    {
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        verticalInput = Input.GetAxisRaw("Vertical");
+    }
+
+    private void MovePlayer()
+    {
+        // calculate movement direction
+        moveDirection = orientation.forward * -verticalInput + orientation.right * -horizontalInput;
+
+        rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
     }
 }
 
