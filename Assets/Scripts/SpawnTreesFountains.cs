@@ -101,7 +101,7 @@ public class SpawnTreesFountains : MonoBehaviour
             var py = bounds.y;
             var pz = bounds.z;
             Vector2 pos = new Vector3(px + randomXX, py, pz + randomZZ);
-            Instantiate(treePrefab, pos, Quaternion.identity);
+            Instantiate(fountainPrefab, pos, Quaternion.identity);
             Debug.Log(positionObject);
         }
     }
