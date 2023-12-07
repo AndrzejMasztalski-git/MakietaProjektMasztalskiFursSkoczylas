@@ -22,6 +22,16 @@ public class Card : MonoBehaviour
     public GameObject marketPrefab;
     public GameObject fire_StationPrefab;
 
+    public int satisfactionValue = 2;
+    public int houseSpaceValue = 0;
+    public int cultureValue = 0;
+    public int scienceValue = 0;
+
+    public Text scienceText;
+    public Text cultureText;
+    public Text satisfactionText;
+    public Text houseText;
+
     private List<string> cardsList = new List<string>
     {
         "J_TREFL_RZUT_P",
@@ -45,6 +55,7 @@ public class Card : MonoBehaviour
         
         boardManager.wasPlacedOnce = false;
     }
+
 
 
     public void ChooseCardsRandomAndSetSprite()
@@ -78,5 +89,18 @@ public class Card : MonoBehaviour
     public void ShuffleButtonClicked()
     {
         ChooseCardsRandomAndSetSprite();
+    }
+
+    public void AddBuildingParameters(int science, int culture, int houseSpace)
+    {
+        scienceValue += science;
+        cultureValue += culture;
+        houseSpaceValue += houseSpace;
+
+        scienceText.text = $"{scienceValue}";
+        cultureText.text = $"{cultureValue}";
+        houseText.text = $"{houseSpaceValue}";
+
+        
     }
 }

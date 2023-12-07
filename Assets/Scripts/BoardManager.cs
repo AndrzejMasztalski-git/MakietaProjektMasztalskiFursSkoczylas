@@ -105,9 +105,44 @@ public class BoardManager : MonoBehaviour
                 
 
                 GameObject buildingPrefab = GetBuildingPrefabForSymbol(symbol);
-
+                Debug.Log(symbol);
                 if (buildingPrefab != null)
                 {
+                    if(symbol == "K")
+                    {
+                        card.AddBuildingParameters(2, 0, 1);
+                    }
+                    else if (symbol == "D")
+                    {
+                        card.AddBuildingParameters(4, 1, 0);
+                    }
+                    else if (symbol == "8")
+                    {
+                        card.AddBuildingParameters(0, 1, 1);
+                    }
+                    else if (symbol == "J")
+                    {
+                        card.AddBuildingParameters(3, 0, 2);
+                    }
+
+                    if (card.scienceValue > 5)
+                    {
+                        card.satisfactionValue++;
+                        card.satisfactionText.text = $"{card.satisfactionValue}";
+                    }
+
+                    if (card.cultureValue > 5)
+                    {
+                        card.satisfactionValue++;
+                        card.satisfactionText.text = $"{card.satisfactionValue}";
+                    }
+
+                    if (card.houseSpaceValue > 5)
+                    {
+                        card.satisfactionValue++;
+                        card.satisfactionText.text = $"{card.satisfactionValue}";
+                    }
+
                     building = Instantiate(buildingPrefab, position, Quaternion.identity);
                     spawnTreesFountains.SpawnTrees(building.transform.position);
                     spawnTreesFountains.SpawnFountains(building.transform.position);
