@@ -34,6 +34,8 @@ public class Card : MonoBehaviour
     public Text houseText;
     public Text mainGoalText;
 
+    public GameObject winPanel;
+
     private List<string> cardsList = new List<string>
     {
         "J_TREFL_RZUT_P",
@@ -127,15 +129,15 @@ public class Card : MonoBehaviour
         switch (randomParameter)
         {
             case 0:
-                mainGoalValue = UnityEngine.Random.Range(15, 40);
+                mainGoalValue = UnityEngine.Random.Range(10, 12);
                 mainGoalText.text = $"Science: {mainGoalValue}";
                 break;
             case 1:
-                mainGoalValue = UnityEngine.Random.Range(1, 10);
+                mainGoalValue = UnityEngine.Random.Range(1, 4);
                 mainGoalText.text = $"Culture: {mainGoalValue}";
                 break;
             case 2:
-                mainGoalValue = UnityEngine.Random.Range(15, 20);
+                mainGoalValue = UnityEngine.Random.Range(5, 10);
                 mainGoalText.text = $"House Space: {mainGoalValue}";
                 break;
         }
@@ -143,18 +145,23 @@ public class Card : MonoBehaviour
 
     public void CheckMainGoal()
     {
-        if (mainGoalText.text.Contains("Science") && scienceValue == mainGoalValue)
+        if (mainGoalText.text.Contains("Science") && scienceValue >= mainGoalValue)
         {
-            Debug.Log("YOU WIN");
+            ShowWinPanel();
         }
-        else if (mainGoalText.text.Contains("Culture") && cultureValue == mainGoalValue)
+        else if (mainGoalText.text.Contains("Culture") && cultureValue >= mainGoalValue)
         {
-            Debug.Log("YOU WIN");
+            ShowWinPanel();
         }
-        else if (mainGoalText.text.Contains("House Space") && houseSpaceValue == mainGoalValue)
+        else if (mainGoalText.text.Contains("House Space") && houseSpaceValue >= mainGoalValue)
         {
-            Debug.Log("YOU WIN");
+            ShowWinPanel();
         }
+    }
+
+    void ShowWinPanel()
+    {
+        winPanel.SetActive(true);
     }
 }
 
