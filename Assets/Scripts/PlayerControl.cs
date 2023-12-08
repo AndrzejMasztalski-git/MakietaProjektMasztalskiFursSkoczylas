@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SterowanieGraczem : MonoBehaviour
+public class PlayerControl : MonoBehaviour
 {
     public float sensX;
     public float sensY;

@@ -4,12 +4,12 @@ using TMPro.Examples;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SpacerPoOsiedluButton : MonoBehaviour
+public class StrollButton : MonoBehaviour
 {
     public Camera MainCamera;
     public Camera PlayerCamera;
     public Button WalkButton;
-    public SterowanieGraczem skryptSterowaniaGraczem;
+    public PlayerControl skryptSterowaniaGraczem;
     //public PlayerMovement skryptPlayerMovement;
     //public MoveCamera skryptMoveCamera;
     public GameObject capsulePrefab;
