@@ -39,8 +39,6 @@ public class TileInteraction : MonoBehaviour
 
     }
 
-
-
     public void ResetTileColor()
     {
         renderer.material.color = originalColor;

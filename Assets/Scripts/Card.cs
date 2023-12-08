@@ -100,7 +100,16 @@ public class Card : MonoBehaviour
         scienceText.text = $"{scienceValue}";
         cultureText.text = $"{cultureValue}";
         houseText.text = $"{houseSpaceValue}";
+    }
 
-        
+    public void SubtractBuildingParameters(int science, int culture, int houseSpace)
+    {
+        scienceValue -= science;
+        cultureValue -= culture;
+        houseSpaceValue -= houseSpace;
+
+        scienceText.text = $"{scienceValue}";
+        cultureText.text = $"{cultureValue}";
+        houseText.text = $"{houseSpaceValue}";
     }
 }
